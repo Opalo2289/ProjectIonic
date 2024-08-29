@@ -3,15 +3,47 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi&#64;ionicframework.com</ion-note>
+          <ion-list-header>Samarian Clever Solution</ion-list-header>
+          <ion-note>Medical Appointment</ion-note>
 
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
+          <ion-accordion-group>
+            @for(module of appPages; track module) {
+              <ion-menu-toggle auto-hide="false">
+
+                @if(module.subPages) {
+                  <ion-accordion>
+                    <ion-item slot="header" lines="none">
+                      <ion-icon aria-hidden="true" slot="start" [ios]="module.icon + '-outline'"
+                        [md]="module.icon + '-sharp'"></ion-icon>
+                      <ion-label>{{ module.title }}</ion-label>
+                    </ion-item>
+
+                    <ion-list slot="content">
+                      <ion-menu-toggle auto-hide="false" *ngFor="let sub of module.subPages">
+                        <ion-item routerDirection="root" [routerLink]="[sub.url]" lines="none" detail="false"
+                          routerLinkActive="selected">
+                          <ion-icon aria-hidden="true" slot="start" [ios]="sub.icon + '-outline'"
+                            [md]="sub.icon + '-sharp'"></ion-icon>
+                          <ion-label>{{ sub.title }}</ion-label>
+                        </ion-item>
+                      </ion-menu-toggle>
+                    </ion-list>
+                  </ion-accordion>
+                }
+
+                @if(!module.subPages) {
+                  <ion-item routerDirection="root" [routerLink]="[module.url]" lines="none" detail="false"
+                    routerLinkActive="selected">
+                    <ion-icon aria-hidden="true" slot="start" [ios]="module.icon + '-outline'"
+                      [md]="module.icon + '-sharp'"></ion-icon>
+                    <ion-label>{{ module.title }}</ion-label>
+                  </ion-item>
+                }
+
+              </ion-menu-toggle>
+
+            }
+          </ion-accordion-group>
         </ion-list>
 
         <ion-list id="labels-list">
@@ -27,3 +59,5 @@
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
+
+<!-- <app-specialty></app-specialty> -->
