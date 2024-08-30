@@ -19,7 +19,7 @@ export class AppComponent {
     { title: 'Agendamiento de citas', url: '/specialty/Gestion de citas medicas', icon: 'mail' },
     { 
       title: 'Usuarios', 
-      url: '/folder/usuarios', 
+      // url: '/folder/usuarios', 
       icon: 'mail',
       subPages: [
         { title: 'Permisos de usurarios', url: '/folder/listar_usuarios', icon: 'list' },
