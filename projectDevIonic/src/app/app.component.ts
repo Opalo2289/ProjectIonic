@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink, IonAccordion, IonAccordionGroup } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -14,6 +14,7 @@ import { SpecialtyPage } from "./specialty/specialty.page";
   imports: [IonAccordionGroup, IonAccordion, RouterLink, RouterLinkActive, CommonModule, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, SpecialtyPage],
 })
 export class AppComponent {
+  displayed: any
   public appPages = [
     { title: 'Citas y Examenes', url: '/folder/busqueda_citas', icon: 'mail' },
     { title: 'Agendamiento de citas', url: '/specialty/Gestion de citas medicas', icon: 'mail' },
@@ -35,5 +36,15 @@ export class AppComponent {
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp });
+  }
+
+  handleItemClick(hasSubmenu: boolean) {
+    // Si el item tiene un submenú, no haces nada (no cambias la vista)
+    if (hasSubmenu) {
+      // Aquí podrías opcionalmente manejar lógica para mostrar algo si se requiere
+      return false; 
+    }
+    // Si no tiene submenú, dejas que se cierre el menú al cambiar la vista
+    return true;
   }
 }

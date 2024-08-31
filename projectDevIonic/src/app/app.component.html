@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane contentId="main-content" when="(min-width: 768px)">
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
@@ -9,11 +9,12 @@
           <ion-accordion-group>
             <ng-container> 
               @for(module of appPages; track module) {
-                <ion-menu-toggle auto-hide="false">
   
                   @if(module.subPages) {
                     <ion-accordion>
-                      <ion-item slot="header" lines="none">
+                      <!-- Aplica la función de click solo en items sin ruta -->
+                      <ion-item slot="header" lines="none" detail="false" button
+                                (click)="handleItemClick(true)">
                         <ion-icon aria-hidden="true" slot="start" [ios]="module.icon + '-outline'"
                           [md]="module.icon + '-sharp'"></ion-icon>
                         <ion-label>{{ module.title }}</ion-label>
@@ -22,7 +23,7 @@
                       <ion-list slot="content">
                         <ion-menu-toggle auto-hide="false" *ngFor="let sub of module.subPages">
                           <ion-item routerDirection="root" [routerLink]="[sub.url]" lines="none" detail="false"
-                            routerLinkActive="selected">
+                            routerLinkActive="selected" (click)="handleItemClick(false)">
                             <ion-icon aria-hidden="true" slot="start" [ios]="sub.icon + '-outline'"
                               [md]="sub.icon + '-sharp'"></ion-icon>
                             <ion-label>{{ sub.title }}</ion-label>
@@ -33,34 +34,29 @@
                   }
   
                   @if(!module.subPages) {
-                    <ion-item routerDirection="root" [routerLink]="[module.url]" lines="none" detail="false"
-                      routerLinkActive="selected">
-                      <ion-icon aria-hidden="true" slot="start" [ios]="module.icon + '-outline'"
-                        [md]="module.icon + '-sharp'"></ion-icon>
-                      <ion-label>{{ module.title }}</ion-label>
-                    </ion-item>
+                    <ion-menu-toggle auto-hide="false">
+                      <ion-item routerDirection="root" [routerLink]="[module.url]" lines="none" detail="false"
+                        routerLinkActive="selected" (click)="handleItemClick(true)">
+                        <ion-icon aria-hidden="true" slot="start" [ios]="module.icon + '-outline'"
+                          [md]="module.icon + '-sharp'"></ion-icon>
+                        <ion-label>{{ module.title }}</ion-label>
+                      </ion-item>
+                    </ion-menu-toggle>
                   }
-  
-                </ion-menu-toggle>
-  
               }
             </ng-container>
-            
           </ion-accordion-group>
         </ion-list>
-
-        <ion-list id="labels-list">
+        <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
             <ion-icon aria-hidden="true" slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
             <ion-label>{{ label }}</ion-label>
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
-
-<!-- <app-specialty></app-specialty> -->
