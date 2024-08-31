@@ -14,7 +14,6 @@ import { SpecialtyPage } from "./specialty/specialty.page";
   imports: [IonAccordionGroup, IonAccordion, RouterLink, RouterLinkActive, CommonModule, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet, SpecialtyPage],
 })
 export class AppComponent {
-  displayed: any
   public appPages = [
     { title: 'Citas y Examenes', url: '/folder/busqueda_citas', icon: 'mail' },
     { title: 'Agendamiento de citas', url: '/specialty/Gestion de citas medicas', icon: 'mail' },
