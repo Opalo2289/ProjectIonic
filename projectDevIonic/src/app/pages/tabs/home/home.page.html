@@ -1,0 +1,45 @@
+<ion-header class="ion-padding">
+  <ion-toolbar >
+    <ion-buttons slot="start" id="nameandtitle">
+     <h1>Hi, Joe Terrell👋</h1>
+     <p>How are you feling today?</p>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-icon size="large" color="primary" name="notifications-outline"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="banner-section">
+    <img src="https://www.redaccionmedica.com/images/faqs/que-es-una-guardia-medica.jpg" alt="banner medico img">
+  </div>
+
+  <div class="categories">
+    <app-card-btn-mini titleValue="Categories"  [valueItems]="categories"></app-card-btn-mini>
+  </div>
+
+  <div class="services">
+      <app-card-btn-mini titleValue="Services"  [valueItems]="services"></app-card-btn-mini>
+  </div>
+
+  <div class="next-appointments">
+    <h2>Next Appointments</h2>
+    @for (description of appointments; track $index) {
+      <ion-card>
+        <ion-card-content>
+          <div class="card-img">
+            <img src="{{description.img}}" alt="">
+          </div>
+          <div class="info-card">
+            <ion-card-header>
+              <h2><strong>{{description.name}}</strong></h2>
+              <h4>{{description.position}}</h4>
+              <span>{{description.date}}</span>
+            </ion-card-header>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    }
+  </div>
+  
+</ion-content>

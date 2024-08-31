@@ -35,3 +35,23 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+:root{
+  /* blue color palette */
+  --var-color-blue-primary:#2196F3;
+  --var-color-blue-second:#1976D2;
+  --var-color-blue-third:#BBDEFB;
+  --var-color-blue-fourth:#BBDEFB;
+
+  /* black color palette */
+  --var-color-black-primary:#000000;
+  --var-color-black-second:#cecece;
+  --var-color-black-third:#a0a0a0;
+
+  /* gray color palette */
+  --var-color-white:#ffff;
+
+  /* white color palette */
+  --var-color-gray:#EBECED;
+
+}

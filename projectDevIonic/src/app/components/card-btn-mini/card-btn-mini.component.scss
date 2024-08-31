@@ -1,0 +1,15 @@
+#service{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.service-items{
+  background-color: var(--var-color-blue-primary);
+  padding: .5rem;
+  border-radius:8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
