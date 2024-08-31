@@ -15,7 +15,7 @@ import { SpecialtyPage } from "./specialty/specialty.page";
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Citas y Examenes', url: '/folder/busqueda_citas', icon: 'mail' },
+    { title: 'Citas', url: '/folder/busqueda_citas', icon: 'mail' },
     { title: 'Agendamiento de citas', url: '/specialty/Gestion de citas medicas', icon: 'mail' },
     { 
       title: 'Usuarios', 
