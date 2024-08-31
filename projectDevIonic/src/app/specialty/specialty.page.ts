@@ -24,7 +24,7 @@ export class SpecialtyPage implements OnInit {
     cardSubtitle: 'Elige tu especialidad',
     items: [
       {
-        thumbnail: 'https://ionicframework.com/docs/img/demos/thumbnail.svg',
+        thumbnail: '../../assets/1040229-673ab7.svg',
         label: 'Cardiologia'
       },
       {
