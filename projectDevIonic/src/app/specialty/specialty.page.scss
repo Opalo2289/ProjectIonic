@@ -1,3 +1,25 @@
 ion-item {
-    --padding-start: 0;
+  --padding-start: 0;
+}
+
+ion-thumbnail {
+  width: 80px;
+  height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  ion-thumbnail {
+    width: 60px;
+    height: auto;
   }
+}
+
+ion-thumbnail img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+ion-item {
+  max-width: 100%;
+}

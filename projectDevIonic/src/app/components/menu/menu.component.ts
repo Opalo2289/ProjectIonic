@@ -52,4 +52,13 @@ export class MenuComponent {
     addIcons({ mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, bookmarkSharp, calendarOutline, peopleOutline, calendarNumberOutline, keyOutline, personAddOutline, cardOutline, storefrontOutline });
   }
 
+  handleItemClick(hasSubmenu: boolean) {
+    // Si el item tiene un submenú, no haces nada (no cambias la vista)
+    if (hasSubmenu) {
+      // Aquí podrías opcionalmente manejar lógica para mostrar algo si se requiere
+      return false; 
+    }
+    // Si no tiene submenú, dejas que se cierre el menú al cambiar la vista
+    return true;
+  }
 }

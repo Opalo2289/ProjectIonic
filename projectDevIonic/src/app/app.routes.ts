@@ -21,5 +21,4 @@ export const routes: Routes = [
     loadChildren: () => import('../app/pages/tabs/tabs/tabs.routers').then( m => m.TabsRoutes)
   }
 
-
 ];

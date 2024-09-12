@@ -2,8 +2,9 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonLabel, IonCardContent, IonCardHeader, IonCardTitle, IonCardSubtitle, IonList, IonCard, IonButtons, IonMenuButton, IonTabButton } from '@ionic/angular/standalone';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { IonicModule, IonThumbnail } from '@ionic/angular';
+import { SpecialityDetailPage } from '../speciality-detail/speciality-detail.page';
 
 @Component({
   selector: 'app-specialty',
@@ -12,39 +13,57 @@ import { IonicModule, IonThumbnail } from '@ionic/angular';
   standalone: true,
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    RouterModule,
+    SpecialityDetailPage
   ]
 })
 export class SpecialtyPage implements OnInit {
 
+  detail = SpecialityDetailPage
   public specialty!: string;
   private activatedRoute = inject(ActivatedRoute);
   public cardData = {
-    cardTitle: 'Especialidades',
-    cardSubtitle: 'Elige tu especialidad',
+    cardTitle: 'Elige tu entrenador personalizado',
+    // cardSubtitle: 'Elige tu especialidad',
     items: [
       {
-        thumbnail: '../../assets/1040229-673ab7.svg',
-        label: 'Cardiologia'
+        thumbnail: 'https://ionicframework.com/docs/img/demos/thumbnail.svg',
+        label: 'Carlos',
+        // url: '/specialtyDetail/carlos'
       },
       {
         thumbnail: 'https://ionicframework.com/docs/img/demos/thumbnail.svg',
-        label: 'Ginecologia'
+        label: 'Juan',
+        // url: '/specialtyDetail/carlos'
       },
       {
         thumbnail: 'https://ionicframework.com/docs/img/demos/thumbnail.svg',
-        label: 'Nutricion'
+        label: 'Mario',
+        // url: '/specialtyDetail/carlos'
       },
       {
         thumbnail: 'https://ionicframework.com/docs/img/demos/thumbnail.svg',
-        label: 'Endocrinologia'
+        label: 'Felipe',
+        // url: '/specialtyDetail/carlos'
       }
     ]
   };
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+    console.log('entra-no-detalle')
     this.specialty = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    this.getTrainner()
+  }
+
+  getTrainner() {
+
+  }
+
+  getDetailTrainner(label: string) {
+    this.router.navigate([`specialty/${this.specialty}/specialtyDetail/${label}`]);
+    // this.router.navigate([`/speciality-detail/${label}`]);
   }
 
 }
